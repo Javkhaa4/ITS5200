@@ -1,0 +1,78 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <script src="./index.js"></script>
+  
+  <style>
+      
+      table, th, td {
+           border: 1px solid;
+      }
+      
+      #leftbox {
+                float:left; 
+                width:33%;
+                height:300px;
+      }
+      #middlebox{
+                float:left; 
+                width:33%;
+                height:300px;
+        }
+        #rightbox{
+                float:right;
+                width:33%;
+                height:300px;
+        }
+        h1{
+                color:green;
+                text-align:center;
+        }
+     
+     
+      
+  </style>
+</head>
+<body>
+  
+  <h1> Wine Quality XGBoost </h1>
+  
+  
+  
+  
+    <div id = "boxes1">
+         
+              
+  <input type="text" id="box1" value="7"> fixed acidity <br/>
+  <input type="text" id="box2" value="0.27"> volatile acidity <br/>
+  <input type="text" id="box3" value="0.36"> citric acid  <br/>
+  <input type="text" id="box4" value="20.7"> residual sugar <br/>
+  <input type="text" id="box5" value="0.045" > chlorides <br/>
+  <input type="text" id="box6" value="45"> free sulfur dioxide <br/>
+  <input type="text" id="box7" value="170"> total sulfur dioxide <br/>
+  <input type="text" id="box8" value="1.001"> density <br/>
+  <input type="text" id="box9" value="3"> pH <br/>
+  <input type="text" id="box10" value="0.45" > sulphates <br/>
+  <input type="text" id="box11" value="8.8"> alcohol <br/>
+
+    </div> 
+      
+  <div>
+      <input style="background-color:blue" type="button" value="Run" onclick="runExample()"/>
+   </div>
+  
+
+        <div id = "boxes2">
+              
+           
+              <h2>Inference </h2>
+              
+               <div id="predictions">
+               </div>
+              
+
+        </div>
+  
+
+</body>
+</html>
