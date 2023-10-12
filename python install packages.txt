@@ -1,0 +1,25 @@
+conda create --name py37_ITS5200_2 python=3.7
+
+conda activate py37_ITS5200_2
+
+pip install numpy
+
+pip install jupyter
+
+pip install torch
+
+pip install matplotlib
+
+pip install pandas
+
+pip install mlxtend
+
+pip install xgboost
+
+pip install imageio
+
+pip install onnxmltools
+
+pip install onnxruntime
+
+jupyter notebook
