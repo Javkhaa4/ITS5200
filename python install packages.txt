@@ -22,4 +22,6 @@ pip install onnxmltools
 
 pip install onnxruntime
 
+pip install torchvision
+
 jupyter notebook
