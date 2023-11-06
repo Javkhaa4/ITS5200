@@ -20,7 +20,7 @@ async function runExample() {
     let tensorX = new ort.Tensor('float32', x, [1, 12] );
     let feeds = {float_input: tensorX};
 
-    let session = await ort.InferenceSession.create('xgboost_WineQuality_ort.onnx');
+    let session = await ort.InferenceSession.create('xgboost_AirQuality_ort.onnx');
     
    let result = await session.run(feeds);
    let outputData = result.variable.data;
