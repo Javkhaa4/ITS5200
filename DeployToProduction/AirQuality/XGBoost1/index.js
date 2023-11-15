@@ -22,17 +22,6 @@ async function runExample() {
 
 
 
-    let predictions = document.getElementById('predictions');
-    let td0 = document.getElementById('td0');
-
-    // Add a condition to set the background color based on the value
-    if (outputData < 2) {
-        td0.style.backgroundColor = 'red';  // Set to your desired color for values less than 0.5
-    } else {
-        td0.style.backgroundColor = 'green';  // Set to your desired color for values greater than or equal to 0.5
-    }
-
-
     
   predictions.innerHTML = ` <hr> Got an output tensor with values: <br/>
    <table>
