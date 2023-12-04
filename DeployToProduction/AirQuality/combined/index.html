@@ -142,22 +142,22 @@
 
   // Set the background color based on the prediction
   switch (outputData2) {
-    case 0:
+    case 0.00:
       td1Element.style.backgroundColor = 'green';
       break;
-    case 1:
+    case 1.00:
       td1Element.style.backgroundColor = 'yellow';
       break;
-    case 2:
+    case 2.00:
       td1Element.style.backgroundColor = 'orange';
       break;
-    case 3:
+    case 3.00:
       td1Element.style.backgroundColor = 'red';
       break;
-    case 4:
+    case 4.00:
       td1Element.style.backgroundColor = 'purple';
       break;
-    case 5:
+    case 5.00:
       td1Element.style.backgroundColor = 'maroon';
       break;
     default:
@@ -167,12 +167,12 @@
     
   function mapPredictionToWord(prediction) {
     const mapping = {
-      0: 'Good',
-      1: 'Satisfactory',
-      2: 'Moderate',
-      3: 'Poor',
-      4: 'Very Poor',
-      5: 'Severe'
+      0.00: 'Good',
+      1.00: 'Satisfactory',
+      2.00: 'Moderate',
+      3.00: 'Poor',
+      4.00: 'Very Poor',
+      5.00: 'Severe'
     };
 
     return mapping.hasOwnProperty(prediction) ? mapping[prediction] : 'Unknown';
