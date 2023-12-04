@@ -128,7 +128,7 @@
 
     // Map the predicted number to the corresponding word
     let predictionWord = mapPredictionToWord(outputData2);
-// Get the td0 element
+// Get the td1 element (fix this line)
   let td1Element = document.getElementById('td1');
 
   // Update the second predicted value section with the latest prediction in words
@@ -143,28 +143,28 @@
   // Set the background color based on the prediction
   switch (outputData2) {
     case 0:
-      td0Element.style.backgroundColor = 'green';
+      td1Element.style.backgroundColor = 'green';
       break;
     case 1:
-      td0Element.style.backgroundColor = 'yellow';
+      td1Element.style.backgroundColor = 'yellow';
       break;
     case 2:
-      td0Element.style.backgroundColor = 'orange';
+      td1Element.style.backgroundColor = 'orange';
       break;
     case 3:
-      td0Element.style.backgroundColor = 'red';
+      td1Element.style.backgroundColor = 'red';
       break;
     case 4:
-      td0Element.style.backgroundColor = 'purple';
+      td1Element.style.backgroundColor = 'purple';
       break;
     case 5:
-      td0Element.style.backgroundColor = 'maroon';
+      td1Element.style.backgroundColor = 'maroon';
       break;
     default:
-      td0Element.style.backgroundColor = 'white'; // Set a default color if prediction is unknown
+      td1Element.style.backgroundColor = 'white'; // Set a default color if prediction is unknown
   }
 }
-
+    
   function mapPredictionToWord(prediction) {
     const mapping = {
       0: 'Good',
