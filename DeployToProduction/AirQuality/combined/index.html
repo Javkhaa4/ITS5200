@@ -132,17 +132,27 @@
   // Map the predicted number to the corresponding word
   let predictionWord = mapPredictionToWord(predictionInteger);
 
+
+     
+ // Get the td1 element
+    let td1Element = document.getElementById('td1');
+
+    // Update the content of td1 based on the prediction
+    td1Element.innerHTML = `${outputData2}, ${predictionWord}`;
+
+     
+     
   // Get the td1 element
-  let td1Element = document.getElementById('td1');
+//  let td1Element = document.getElementById('td1');
 
   // Update the second predicted value section with the latest prediction in words
-  predictions2.innerHTML = `<hr> Level of Concern <br/>
-      <table>
-        <tr>
-          <td> Air Quality: </td>
-          <td id="td1"> ${outputData2}, ${predictionWord} </td>
-        </tr>
-      </table>`;
+  //predictions2.innerHTML = `<hr> Level of Concern <br/>
+    //  <table>
+      //  <tr>
+        //  <td> Air Quality: </td>
+          //<td id="td1"> ${outputData2}, ${predictionWord} </td>
+        //</tr>
+      //</table>`;
 
   // Set the background color based on the prediction
   switch (predictionInteger) {
