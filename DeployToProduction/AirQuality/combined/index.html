@@ -128,17 +128,41 @@
 
     // Map the predicted number to the corresponding word
     let predictionWord = mapPredictionToWord(outputData2);
+// Get the td0 element
+  let td0Element = document.getElementById('td0');
 
-    // Update the second predicted value section with the latest prediction in words
-    predictions2.innerHTML = `<hr>Air Quality by feeling <br/>
-        <table>
-          <tr>
-            <td>AQI Bucket</td>
-            <td id="td0">${predictionWord}</td>
-          </tr>
-        </table>`;
-       // Change the background color based on the prediction
-  changeBackgroundColor(predictionWord);
+  // Update the second predicted value section with the latest prediction in words
+  predictions2.innerHTML = `<hr> Level of Concern <br/>
+      <table>
+        <tr>
+          <td> Air Quality: </td>
+          <td id="td0"> ${predictionWord} </td>
+        </tr>
+      </table>`;
+
+  // Set the background color based on the prediction
+  switch (outputData2) {
+    case 0:
+      td0Element.style.backgroundColor = 'green';
+      break;
+    case 1:
+      td0Element.style.backgroundColor = 'yellow';
+      break;
+    case 2:
+      td0Element.style.backgroundColor = 'orange';
+      break;
+    case 3:
+      td0Element.style.backgroundColor = 'red';
+      break;
+    case 4:
+      td0Element.style.backgroundColor = 'purple';
+      break;
+    case 5:
+      td0Element.style.backgroundColor = 'maroon';
+      break;
+    default:
+      td0Element.style.backgroundColor = 'white'; // Set a default color if prediction is unknown
+  }
 }
 
   function mapPredictionToWord(prediction) {
@@ -155,22 +179,7 @@
   }
 
   
-function changeBackgroundColor(predictionWord) {
-  const body = document.body;
 
-  // Define colors for each prediction category
-  const colors = {
-    'Good': 'green',
-    'Satisfactory': 'yellow',
-    'Moderate': 'orange',
-    'Poor': 'red',
-    'Very Poor': 'purple',
-    'Severe': 'maroon'
-  };
-
-  // Set the background color based on the prediction category
-  body.style.backgroundColor = colors.hasOwnProperty(predictionWord) ? colors[predictionWord] : 'white';
-}  
   </script>
 </body>
 </html>
