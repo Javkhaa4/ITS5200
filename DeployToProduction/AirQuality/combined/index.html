@@ -124,14 +124,14 @@
 
       let session = await ort.InferenceSession.create('xgboost_Classification_AirQuality_ort.onnx');
       let result = await session.run(feeds);
-     let outputData = parseInt(result.variable.data);
+     let outputData2 = parseInt(result.variable.data);
 
     // Map the predicted number to the corresponding word
-    let predictionWord = mapPredictionToWord(outputData);
+    let predictionWord = mapPredictionToWord(outputData2);
 
     // Update the second predicted value section with the latest prediction in words
-    console.log(`Predicted AQI: ${outputData} - ${predictionWord}`);
-    document.getElementById('td0_page2').innerText = `${outputData} - ${predictionWord}`;
+    console.log(`Predicted AQI: ${outputData2} - ${predictionWord}`);
+    document.getElementById('td0_page2').innerText = `${outputData2} - ${predictionWord}`;
   }
 
   function mapPredictionToWord(prediction) {
