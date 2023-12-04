@@ -53,7 +53,7 @@
     </div>
 
     <div>
-      <input style="background-color: blue" type="button" value="Run" onclick="runExample1()"/>
+      <input type="button" value="Calculate" onclick="runExample1()"/>
     </div>
 
     <div id="predictions1">
@@ -69,11 +69,11 @@
     </div>
 
     <div>
-      <input style="background-color: blue" type="button" value="Run" onclick="runExample2()"/>
+      <input type="button" value="Calculate" onclick="runExample2()"/>
     </div>
 
     <div id="predictions2">
-      <h2> Air Quality Index (AQI) </h2>
+      <h2> AQI Bucket </h2>
     </div>
   </div>
 
@@ -104,10 +104,10 @@
 
       // Show the predicted AQI on the first page
       let predictions1 = document.getElementById('predictions1');
-      predictions1.innerHTML = `<hr>Got an output tensor with values: <br/>
+      predictions1.innerHTML = `<hr>Air Quality by Index <br/>
         <table>
           <tr>
-            <td>Rating of Air Quality</td>
+            <td>Air Quality Index</td>
             <td id="td0">${outputData}</td>
           </tr>
         </table>`;
@@ -129,10 +129,10 @@
 
       // Show the predicted AQI on the second page
       let predictions2 = document.getElementById('predictions2');
-      predictions2.innerHTML = `<hr>Got an output tensor with values: <br/>
+      predictions2.innerHTML = `<hr>Air Quality by feeling <br/>
         <table>
           <tr>
-            <td>Rating of Air Quality</td>
+            <td>AQI Bucket</td>
             <td id="td0">${outputData}</td>
           </tr>
         </table>`;
