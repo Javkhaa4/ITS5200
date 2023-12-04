@@ -103,7 +103,7 @@
 
       // Show the predicted AQI on the first page
       let predictions1 = document.getElementById('predictions1');
-      predictions1.innerHTML = `<hr>Air Quality by Index <br/>
+      predictions1.innerHTML = `<hr> Value of AQI <br/>
         <table>
           <tr>
             <td>AQI</td>
@@ -129,14 +129,14 @@
     // Map the predicted number to the corresponding word
     let predictionWord = mapPredictionToWord(outputData2);
 // Get the td0 element
-  let td0Element = document.getElementById('td0');
+  let td1Element = document.getElementById('td1');
 
   // Update the second predicted value section with the latest prediction in words
   predictions2.innerHTML = `<hr> Level of Concern <br/>
       <table>
         <tr>
           <td> Air Quality: </td>
-          <td id="td0"> ${predictionWord} </td>
+          <td id="td1"> ${predictionWord} </td>
         </tr>
       </table>`;
 
