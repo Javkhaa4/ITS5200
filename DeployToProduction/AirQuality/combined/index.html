@@ -1,0 +1,132 @@
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+  <script src="./combined.js"></script>
+  
+  <style>
+    table, th, td {
+      border: 1px solid;
+    }
+
+    #leftbox {
+      float: left;
+      width: 33%;
+      height: 300px;
+    }
+
+    #middlebox {
+      float: left;
+      width: 33%;
+      height: 300px;
+    }
+
+    #rightbox {
+      float: right;
+      width: 33%;
+      height: 300px;
+    }
+
+    h1 {
+      color: green;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1> Air Quality XGBoost </h1>
+
+  <div id="page1">
+    <div id="boxes1">
+      <input type="text" id="box1" value="96.83"> Particulate Matter 2.5 (PM2.5) <br/>
+      <!-- ... Other input fields ... -->
+    </div>
+
+    <div>
+      <input style="background-color: blue" type="button" value="Run" onclick="runExample1()"/>
+    </div>
+
+    <div id="predictions1">
+      <h2> Air Quality Index (AQI) </h2>
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="page2">
+    <div id="boxes2">
+      <input type="text" id="box1_page2" value="208"> Air Quality Index <br/>
+    </div>
+
+    <div>
+      <input style="background-color: blue" type="button" value="Run" onclick="runExample2()"/>
+    </div>
+
+    <div id="predictions2">
+      <h2> Air Quality Index (AQI) </h2>
+    </div>
+  </div>
+
+  <script>
+    async function runExample1() {
+      var x = new Float32Array(12);
+
+      x[0] = parseFloat(document.getElementById('box1').value);
+       x[1] = document.getElementById('box2').value;
+     x[2] = document.getElementById('box3').value;
+     x[3] = document.getElementById('box4').value;
+     x[4] = document.getElementById('box5').value;
+     x[5] = document.getElementById('box6').value;
+     x[6] = document.getElementById('box7').value;
+     x[7] = document.getElementById('box8').value;
+     x[8] = document.getElementById('box9').value;
+     x[9] = document.getElementById('box10').value;
+     x[10] = document.getElementById('box11').value;
+     x[11] = document.getElementById('box12').value;
+
+
+      let tensorX = new ort.Tensor('float32', x, [1, 12]);
+      let feeds = { float_input: tensorX };
+
+      let session = await ort.InferenceSession.create('xgboost_AirQuality_ort.onnx');
+      let result = await session.run(feeds);
+      let outputData = parseFloat(result.variable.data).toFixed(2);
+
+      // Show the predicted AQI on the first page
+      let predictions1 = document.getElementById('predictions1');
+      predictions1.innerHTML = `<hr>Got an output tensor with values: <br/>
+        <table>
+          <tr>
+            <td>Rating of Air Quality</td>
+            <td id="td0">${outputData}</td>
+          </tr>
+        </table>`;
+
+      // Automatically populate input on page 2 with predicted AQI from page 1
+      document.getElementById('box1_page2').value = outputData;
+    }
+
+    async function runExample2() {
+      var x = new Float32Array(1);
+      x[0] = parseFloat(document.getElementById('box1_page2').value);
+
+      let tensorX = new ort.Tensor('float32', x, [1, 1]);
+      let feeds = { float_input: tensorX };
+
+      let session = await ort.InferenceSession.create('xgboost_Classification_AirQuality_ort.onnx');
+      let result = await session.run(feeds);
+      let outputData = parseFloat(result.variable.data).toFixed(2);
+
+      // Show the predicted AQI on the second page
+      let predictions2 = document.getElementById('predictions2');
+      predictions2.innerHTML = `<hr>Got an output tensor with values: <br/>
+        <table>
+          <tr>
+            <td>Rating of Air Quality</td>
+            <td id="td0">${outputData}</td>
+          </tr>
+        </table>`;
+    }
+  </script>
+</body>
+</html>
