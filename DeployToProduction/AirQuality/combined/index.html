@@ -72,7 +72,7 @@
       <input type="button" value="Calculate" onclick="runExample2()"/>
     </div>
 
-    <div id="predictions2">
+    <div id="td1Element">
       <h2> Level of Concern </h2>
     </div>
   </div>
@@ -115,7 +115,8 @@
       document.getElementById('box1_page2').value = outputData;
     }
 
-   async function runExample2() {
+    
+async function runExample2() {
   var x = new Float32Array(1);
   x[0] = parseFloat(document.getElementById('box1_page2').value);
 
@@ -131,28 +132,18 @@
 
   // Map the predicted number to the corresponding word
   let predictionWord = mapPredictionToWord(predictionInteger);
-
-
-     
- // Get the td1 element
-    let td1Element = document.getElementById('td1');
-
-    // Update the content of td1 based on the prediction
-    td1Element.innerHTML = `${outputData2}, ${predictionWord}`;
-
-     
      
   // Get the td1 element
-//  let td1Element = document.getElementById('td1');
+  let td1Element = document.getElementById('td1');
 
   // Update the second predicted value section with the latest prediction in words
-  //predictions2.innerHTML = `<hr> Level of Concern <br/>
-    //  <table>
-      //  <tr>
-        //  <td> Air Quality: </td>
-          //<td id="td1"> ${outputData2}, ${predictionWord} </td>
-        //</tr>
-      //</table>`;
+  td1Element.innerHTML = `<hr> Level of Concern <br/>
+      <table>
+        <tr>
+          <td> Air Quality: </td>
+          <td id="td1"> ${outputData2}, ${predictionWord} </td>
+        </tr>
+      </table>`;
 
   // Set the background color based on the prediction
   switch (predictionInteger) {
