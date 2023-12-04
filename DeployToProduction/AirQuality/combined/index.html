@@ -78,87 +78,73 @@
   </div>
 
   <script>
-    async function runExample1() {
- 
+async function runExample1() {
+    var x = new Float32Array(12);
 
-    var x = new Float32Array( 1, 12 )
+    x[0] = parseFloat(document.getElementById('box1').value);
+    x[1] = parseFloat(document.getElementById('box2').value);
+    x[2] = parseFloat(document.getElementById('box3').value);
+    x[3] = parseFloat(document.getElementById('box4').value);
+    x[4] = parseFloat(document.getElementById('box5').value);
+    x[5] = parseFloat(document.getElementById('box6').value);
+    x[6] = parseFloat(document.getElementById('box7').value);
+    x[7] = parseFloat(document.getElementById('box8').value);
+    x[8] = parseFloat(document.getElementById('box9').value);
+    x[9] = parseFloat(document.getElementById('box10').value);
+    x[10] = parseFloat(document.getElementById('box11').value);
+    x[11] = parseFloat(document.getElementById('box12').value);
 
-    var x = [];
-
-     x[0] = document.getElementById('box1').value;
-     x[1] = document.getElementById('box2').value;
-     x[2] = document.getElementById('box3').value;
-     x[3] = document.getElementById('box4').value;
-     x[4] = document.getElementById('box5').value;
-     x[5] = document.getElementById('box6').value;
-     x[6] = document.getElementById('box7').value;
-     x[7] = document.getElementById('box8').value;
-     x[8] = document.getElementById('box9').value;
-     x[9] = document.getElementById('box10').value;
-     x[10] = document.getElementById('box11').value;
-     x[11] = document.getElementById('box12').value;
-
-    let tensorX = new ort.Tensor('float32', x, [1, 12] );
-    let feeds = {float_input: tensorX};
+    let tensorX = new ort.Tensor('float32', x, [1, 12]);
+    let feeds = { float_input: tensorX };
 
     let session = await ort.InferenceSession.create('xgboost_AirQuality_ort.onnx');
-    
-   let result = await session.run(feeds);
-   let outputData = result.variable.data;
+    let result = await session.run(feeds);
+    let outputData = result.variable.data;
 
-  outputData = parseFloat(outputData).toFixed(2)
+    outputData = parseFloat(outputData).toFixed(2);
 
-   let predictions = document.getElementById('predictions');
+    // Show the predicted AQI on the first page
+    let predictions1 = document.getElementById('predictions1');
+    predictions1.innerHTML = `<hr>Got an output tensor with values: <br/>
+        <table>
+          <tr>
+            <td>Rating of Air Quality</td>
+            <td id="td0">${outputData}</td>
+          </tr>
+        </table>`;
 
-  predictions.innerHTML = ` <hr> Got an output tensor with values: <br/>
-   <table>
-     <tr>
-       <td>  Rating of Air Quality  </td>
-       <td id="td0">  ${outputData}  </td>
-     </tr>
-  </table>`;
- 
-      // After predicting AQI on the first page, hide page 1 and show page 2
-      document.getElementById('page1').style.display = 'none';
-      document.getElementById('page2').style.display = 'block';
+    // Hide the first page and show the second page
+    document.getElementById('page1').style.display = 'none';
+    document.getElementById('page2').style.display = 'block';
 
-      // Automatically populate input on page 2 with predicted AQI from page 1
-      document.getElementById('box1_page2').value = outputData;
-    }
+    // Automatically populate input on page 2 with predicted AQI from page 1
+    document.getElementById('box1_page2').value = outputData;
+}
 
-    async function runExample2() {
-  
-    var x = new Float32Array( 1, 1 )
+async function runExample2() {
+    var x = new Float32Array(1);
+    x[0] = parseFloat(document.getElementById('box1_page2').value);
 
-    var x = [];
-
-     x[0] = document.getElementById('box1_page2').value;
-
-
-    let tensorX = new ort.Tensor('float32', x, [1, 1] );
-    let feeds = {float_input: tensorX};
+    let tensorX = new ort.Tensor('float32', x, [1, 1]);
+    let feeds = { float_input: tensorX };
 
     let session = await ort.InferenceSession.create('xgboost_Classification_AirQuality_ort.onnx');
-    
-   let result = await session.run(feeds);
-   let outputData = result.variable.data;
+    let result = await session.run(feeds);
+    let outputData = result.variable.data;
 
-  outputData = parseFloat(outputData).toFixed(2)
+    outputData = parseFloat(outputData).toFixed(2);
 
-   let predictions = document.getElementById('predictions');
+    // Show the predicted AQI on the second page
+    let predictions2 = document.getElementById('predictions2');
+    predictions2.innerHTML = `<hr>Got an output tensor with values: <br/>
+        <table>
+          <tr>
+            <td>Rating of Air Quality</td>
+            <td id="td0">${outputData}</td>
+          </tr>
+        </table>`;
+}
 
-
-
-
-    
-  predictions.innerHTML = ` <hr> Got an output tensor with values: <br/>
-   <table>
-     <tr>
-       <td>  Rating of Air Quality  </td>
-       <td id="td0">  ${outputData}  </td>
-     </tr>
-  </table>`;
-    }
   </script>
 </body>
 </html>
