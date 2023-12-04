@@ -124,7 +124,7 @@
 
       let session = await ort.InferenceSession.create('xgboost_Classification_AirQuality_ort.onnx');
       let result = await session.run(feeds);
-     let outputData2 = parseInt(result.variable.data);
+     let outputData2 = parseFloat(result.variable.data).toFixed(2);
 
     // Map the predicted number to the corresponding word
     let predictionWord = mapPredictionToWord(outputData2);
