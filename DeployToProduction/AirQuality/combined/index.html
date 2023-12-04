@@ -130,8 +130,13 @@
     let predictionWord = mapPredictionToWord(outputData2);
 
     // Update the second predicted value section with the latest prediction in words
-    console.log(`Predicted AQI: ${outputData2} - ${predictionWord}`);
-    document.getElementById('td0_page2').innerText = `${outputData2} - ${predictionWord}`;
+    predictions2.innerHTML = `<hr>Air Quality by feeling <br/>
+        <table>
+          <tr>
+            <td>AQI Bucket</td>
+            <td id="td0">${outputData2}</td>
+          </tr>
+        </table>`;
   }
 
   function mapPredictionToWord(prediction) {
