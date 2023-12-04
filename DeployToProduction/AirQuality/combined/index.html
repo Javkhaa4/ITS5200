@@ -3,31 +3,26 @@
   <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
   <script src="./combined.js"></script>
   
-  <style>
+    <style>
     table, th, td {
       border: 1px solid;
     }
 
-    #leftbox {
-      float: left;
-      width: 33%;
-      height: 300px;
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
 
-    #middlebox {
-      float: left;
-      width: 33%;
-      height: 300px;
-    }
-
-    #rightbox {
-      float: right;
-      width: 33%;
-      height: 300px;
+    #leftbox, #middlebox, #rightbox {
+      width: 50%;
+      margin-bottom: 20px;
     }
 
     h1 {
-      color: green;
+      color: black;
       text-align: center;
     }
   </style>
@@ -106,7 +101,7 @@
       predictions1.innerHTML = `<hr>Air Quality by Index <br/>
         <table>
           <tr>
-            <td>Air Quality Index</td>
+            <td>AQI</td>
             <td id="td0">${outputData}</td>
           </tr>
         </table>`;
