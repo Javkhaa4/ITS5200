@@ -127,21 +127,21 @@
       let outputData = parseFloat(result.variable.data).toFixed(2);
 
       // Show the predicted AQI on the second page
-//      let predictions2 = document.getElementById('predictions2');
-//      predictions2.innerHTML = `<hr>Air Quality by feeling <br/>
-//        <table>
-//          <tr>
-//            <td>AQI Bucket</td>
-//            <td id="td0">${outputData}</td>
-//          </tr>
-//        </table>`;
+      let predictions2 = document.getElementById('predictions2');
+      predictions2.innerHTML = `<hr>Air Quality by feeling <br/>
+        <table>
+          <tr>
+            <td>AQI Bucket</td>
+            <td id="td0">${predictionWord}</td>
+          </tr>
+        </table>`;
       
  // Map the predicted number to the corresponding word
     let predictionWord = mapPredictionToWord(outputData);
 
     // Update the second predicted value section with the latest prediction in words
-    console.log(`Predicted AQI: ${outputData} - ${predictionWord}`);
-    document.getElementById('td0_page2').innerText = `${outputData} - ${predictionWord}`;
+ //   console.log(`Predicted AQI: ${outputData} - ${predictionWord}`);
+ //   document.getElementById('td0_page2').innerText = `${outputData} - ${predictionWord}`;
   }
 
   function mapPredictionToWord(prediction) {
