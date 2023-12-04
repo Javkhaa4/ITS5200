@@ -136,36 +136,26 @@
 //          </tr>
 //        </table>`;
       
-   // Map the predicted number to the corresponding word
-    let predictionWord;
-    switch (parseInt(outputData)) {
-      case 0:
-        predictionWord = 'Very Poor';
-        break;
-      case 1:
-        predictionWord = 'Poor';
-        break;
-      case 2:
-        predictionWord = 'Moderate';
-        break;
-      case 3:
-        predictionWord = 'Satisfactory';
-        break;
-      case 4:
-        predictionWord = 'Good';
-        break;
-      case 5:
-        predictionWord = 'Severe';
-        break;
-      default:
-        predictionWord = 'Unknown';
-        break;
-    }
+ // Map the predicted number to the corresponding word
+    let predictionWord = mapPredictionToWord(outputData);
 
     // Update the second predicted value section with the latest prediction in words
     console.log(`Predicted AQI: ${outputData} - ${predictionWord}`);
     document.getElementById('td0_page2').innerText = `${outputData} - ${predictionWord}`;
- 
+  }
+
+  function mapPredictionToWord(prediction) {
+    const mapping = {
+      0: 'Very Poor',
+      1: 'Poor',
+      2: 'Moderate',
+      3: 'Satisfactory',
+      4: 'Good',
+      5: 'Severe'
+    };
+
+    return mapping.hasOwnProperty(prediction) ? mapping[prediction] : 'Unknown';
+
     }
   </script>
 </body>
