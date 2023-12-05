@@ -26,9 +26,9 @@
       height: 300px;
     }
 
-    h1 {
+    h2 {
       color: black;
-      text-align: left;
+      text-align: Center;
     }
 
   </style>
@@ -38,6 +38,7 @@
   <h2> Air Quality Index Calculator </h2>
 
   <div id="page1">
+    <h4> Air Quality Index </h4>
     <div id="boxes1">
       <input type="text" id="box1" value="96.83"> Particulate Matter 2.5 (PM2.5) <br/>
       <input type="text" id="box2" value="139.36"> articulate Matter 10 (PM10) <br/>
@@ -55,7 +56,7 @@
     <div>
       <input type="button" value="Calculate" onclick="runExample1()"/>
     </div>
-    <h4> Air Quality Index </h4>
+    
     <div id="predictions1">
     </div>
   </div>
@@ -104,7 +105,7 @@
       predictions1.innerHTML = `
         <table>
           <tr>
-            <td> AQI : </td>
+            <td> Air Quality Index : </td>
             <td id="td0"> ${outputData} </td>
           </tr>
         </table>`;
@@ -136,7 +137,7 @@ async function runExample2() {
   td1Element.id = 'td1';
 
   // Update the second predicted value section with the latest prediction in words
-  predictions2.innerHTML = `
+  predictions2.innerHTML = ` <br/>
       <table>
         <tr>
            <td> Air Quality : </td>
