@@ -181,10 +181,9 @@ async function runExample2() {
 let table = predictions2.querySelector('table');
 let tr = document.createElement('tr');
 let td0 = document.createElement('td');
-td0.textContent = outputData2; // Set the content of the first column
+td0.style.backgroundColor = td1Element; // Set the content of the first column
 let td1 = document.createElement('td');
-td1.textContent = predictionWord; // Set the content of the second column
-tr.appendChild(td1Element);
+td1.style.backgroundColor = td1Element; // Set the content of the second column
 tr.appendChild(td1Element);
 table.appendChild(tr);
 
