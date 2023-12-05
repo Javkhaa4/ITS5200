@@ -135,7 +135,7 @@ async function runExample2() {
   let predictionWord = mapPredictionToWord(predictionInteger);
      
  // Create the td1 element dynamically
-  let td1Element = document.createElement('td1');
+  let td1Element = document.createElement('td');
   td1Element.id = 'td1';
 
   // Update the second predicted value section with the latest prediction in words
@@ -172,10 +172,22 @@ async function runExample2() {
   }
 
   // Append the td1 element to the existing table
-  let table = predictions2.querySelector('table');
-  let tr = document.createElement('tr');
-  tr.appendChild(td1Element);
-  table.appendChild(tr);
+ // let table = predictions2.querySelector('table');
+ // let tr = document.createElement('tr');
+ // tr.appendChild(td1Element);
+ // table.appendChild(tr);
+
+// Get the existing table element within the predictions2 div
+let table = predictions2.querySelector('table');
+let tr = document.createElement('tr');
+let td0 = document.createElement('td');
+td0.textContent = outputData2; // Set the content of the first column
+let td1 = document.createElement('td');
+td1.textContent = predictionWord; // Set the content of the second column
+tr.appendChild(td0);
+tr.appendChild(td1);
+table.appendChild(tr);
+
 
 
 }
