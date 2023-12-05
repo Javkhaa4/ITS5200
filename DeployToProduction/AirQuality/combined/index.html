@@ -72,9 +72,10 @@
     <div>
       <input type="button" value="Calculate" onclick="runExample2()"/>
     </div>
-
+    
+    <h2> Level of Concern </h2>
     <div id="predictions2">
-      <h2> Level of Concern </h2>
+      
     </div>
   </div>
 
@@ -139,27 +140,13 @@ async function runExample2() {
   td1Element.id = 'td1';
 
   // Update the second predicted value section with the latest prediction in words
-//  predictions2.innerHTML = `<hr> Level of Concern <br/>
-  //    <table>
-    //    <tr>
-      //     <td> Air Quality: </td>
-        //   <td id="td1"> ${outputData2}, ${predictionWord} </td>
-       // </tr>
-     // </table>`;
-
-  
-// Create the level of concern content dynamically
-let levelOfConcernContent = `<hr> Level of Concern <br/>
-  <table>
-    <tr>
-       <td> Air Quality: </td>
-       <td id="td1"> ${outputData2}, ${predictionWord} </td>
-    </tr>
-  </table>`;
-
-// Append the new content to the existing content in predictions2
-predictions2.insertAdjacentHTML('beforeend', levelOfConcernContent);
-
+  predictions2.innerHTML = `<hr> Level of Concern <br/>
+      <table>
+        <tr>
+           <td> Air Quality: </td>
+           <td id="td1"> ${outputData2}, ${predictionWord} </td>
+        </tr>
+      </table>`;
   
 
   
