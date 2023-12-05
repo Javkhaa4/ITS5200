@@ -147,48 +147,74 @@ async function runExample2() {
         </tr>
       </table>`;
 
-  // Set the background color based on the prediction
-  switch (predictionInteger) {
-    case 0:
-      td1Element.style.backgroundColor = 'green';
-      break;
-    case 1:
-      td1Element.style.backgroundColor = 'yellow';
-      break;
-    case 2:
-      td1Element.style.backgroundColor = 'orange';
-      break;
-    case 3:
-      td1Element.style.backgroundColor = 'red';
-      break;
-    case 4:
-      td1Element.style.backgroundColor = 'purple';
-      break;
-    case 5:
-      td1Element.style.backgroundColor = 'maroon';
-      break;
-    default:
-      td1Element.style.backgroundColor = 'white'; // Set a default color if prediction is unknown
-  }
-
-  // Append the td1 element to the existing table
- // let table = predictions2.querySelector('table');
- // let tr = document.createElement('tr');
- // tr.appendChild(td1Element);
- // table.appendChild(tr);
-
-// Get the existing table element within the predictions2 div
+  // Get the existing table element within the predictions2 div
 let table = predictions2.querySelector('table');
+
+// Create a new table row element
 let tr = document.createElement('tr');
+
+// Create a new td element for the first column (td0)
 let td0 = document.createElement('td');
-td0.style.backgroundColor = td1Element; // Set the content of the first column
+td0.textContent = outputData2; // Set the content of the first column
+
+// Create a new td element for the second column (td1)
 let td1 = document.createElement('td');
-td1.style.backgroundColor = td1Element; // Set the content of the second column
+td1.textContent = predictionWord; // Set the content of the second column
+
+// Set background color for the first column based on outputData2
+switch (predictionInteger) {
+  case 0:
+    td0.style.backgroundColor = 'green';
+    break;
+  case 1:
+    td0.style.backgroundColor = 'yellow';
+    break;
+  case 2:
+    td0.style.backgroundColor = 'orange';
+    break;
+  case 3:
+    td0.style.backgroundColor = 'red';
+    break;
+  case 4:
+    td0.style.backgroundColor = 'purple';
+    break;
+  case 5:
+    td0.style.backgroundColor = 'maroon';
+    break;
+  default:
+    td0.style.backgroundColor = 'white'; // Set a default color if prediction is unknown
+}
+
+// Set background color for the second column based on outputData2
+switch (predictionInteger) {
+  case 0:
+    td1.style.backgroundColor = 'green';
+    break;
+  case 1:
+    td1.style.backgroundColor = 'yellow';
+    break;
+  case 2:
+    td1.style.backgroundColor = 'orange';
+    break;
+  case 3:
+    td1.style.backgroundColor = 'red';
+    break;
+  case 4:
+    td1.style.backgroundColor = 'purple';
+    break;
+  case 5:
+    td1.style.backgroundColor = 'maroon';
+    break;
+  default:
+    td1.style.backgroundColor = 'white'; // Set a default color if prediction is unknown
+}
+
+// Append the td elements to the new table row
 tr.appendChild(td0);
 tr.appendChild(td1);
+
+// Append the new table row to the existing table
 table.appendChild(tr);
-
-
 
 }
 
