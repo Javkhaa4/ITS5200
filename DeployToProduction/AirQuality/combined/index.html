@@ -57,9 +57,10 @@
       <input type="button" value="Calculate" onclick="runExample1()"/>
     </div>
 
+    <h4> Air Quality Index </h4>
     <div id="predictions1">
-      <h4> Air Quality Index </h4>
     </div>
+    
   </div>
 
   <hr>
@@ -105,7 +106,7 @@
 
       // Show the predicted AQI on the first page
       let predictions1 = document.getElementById('predictions1');
-      predictions1.innerHTML = `<hr> Air Quality Index <br/>
+      predictions1.innerHTML = `<hr> <br/>
         <table>
           <tr>
             <td> AQI </td>
@@ -140,7 +141,7 @@ async function runExample2() {
   td1Element.id = 'td1';
 
   // Update the second predicted value section with the latest prediction in words
-  predictions2.innerHTML = `<hr> Level of Concern <br/>
+  predictions2.innerHTML = `<hr> <br/>
       <table>
         <tr>
            <td> Air Quality: </td>
