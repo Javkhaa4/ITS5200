@@ -134,16 +134,11 @@ async function runExample2() {
   // Map the predicted number to the corresponding word
   let predictionWord = mapPredictionToWord(predictionInteger);
 
-  // Create the td1 element dynamically
-  let td1Element = document.createElement('td');
-  td1Element.id = 'td1';
-  td1Element.textContent = `${outputData2}, ${predictionWord}`;
+  // Get the td1 element
+  let td1Element = document.getElementById('td1');
 
-  // Append the td1 element to the existing table
-  let table = predictions2.querySelector('table');
-  let tr = document.createElement('tr');
-  tr.appendChild(td1Element);
-  table.appendChild(tr);
+  // Set the content of the td1 element
+  td1Element.textContent = `${outputData2}, ${predictionWord}`;
 
   // Set the background color based on the prediction
   switch (predictionInteger) {
