@@ -58,6 +58,12 @@
 
     <div id="predictions1">
       <h2> Air Quality Index </h2>
+      <table>
+          <tr>
+            <td> AQI </td>
+            <td id="td0"> ${outputData} </td>
+          </tr>
+        </table>
     </div>
   </div>
 
@@ -103,13 +109,13 @@
 
       // Show the predicted AQI on the first page
       let predictions1 = document.getElementById('predictions1');
-      predictions1.innerHTML = `<hr> Air Quality Index <br/>
-        <table>
-          <tr>
-            <td> AQI </td>
-            <td id="td0"> ${outputData} </td>
-          </tr>
-        </table>`;
+     // predictions1.innerHTML = `<hr> Air Quality Index <br/>
+     //   <table>
+     //     <tr>
+     //       <td> AQI </td>
+     //       <td id="td0"> ${outputData} </td>
+     //     </tr>
+     //   </table>`;
 
       // Automatically populate input on page 2 with predicted AQI from page 1
       document.getElementById('box1_page2').value = outputData;
