@@ -58,12 +58,6 @@
 
     <div id="predictions1">
       <h2> Air Quality Index </h2>
-      <table>
-          <tr>
-            <td> AQI </td>
-            <td id="td0"> ${outputData} </td>
-          </tr>
-        </table>
     </div>
   </div>
 
@@ -109,13 +103,13 @@
 
       // Show the predicted AQI on the first page
       let predictions1 = document.getElementById('predictions1');
-     // predictions1.innerHTML = `<hr> Air Quality Index <br/>
-     //   <table>
-     //     <tr>
-     //       <td> AQI </td>
-     //       <td id="td0"> ${outputData} </td>
-     //     </tr>
-     //   </table>`;
+      predictions1.innerHTML = `<hr> Air Quality Index <br/>
+        <table>
+          <tr>
+            <td> AQI </td>
+            <td id="td0"> ${outputData} </td>
+          </tr>
+        </table>`;
 
       // Automatically populate input on page 2 with predicted AQI from page 1
       document.getElementById('box1_page2').value = outputData;
@@ -138,8 +132,20 @@ async function runExample2() {
 
   // Map the predicted number to the corresponding word
   let predictionWord = mapPredictionToWord(predictionInteger);
+     
+  // Get the td1 element
+  let td1Element = document.getElementById('td1');
 
- // Set the background color based on the prediction
+  // Update the second predicted value section with the latest prediction in words
+  predictions2.innerHTML = `<hr> Level of Concern <br/>
+      <table>
+        <tr>
+          <td> Air Quality: </td>
+          <td id="td1"> ${outputData2}, ${predictionWord} </td>
+        </tr>
+      </table>`;
+
+  // Set the background color based on the prediction
   switch (predictionInteger) {
     case 0:
       td1Element.style.backgroundColor = 'green';
@@ -162,18 +168,6 @@ async function runExample2() {
     default:
       td1Element.style.backgroundColor = 'white'; // Set a default color if prediction is unknown
   }
-  
-  // Get the td1 element
-  let td1Element = document.getElementById('td1');
-
-  // Update the second predicted value section with the latest prediction in words
-  predictions2.innerHTML = `<hr> Level of Concern <br/>
-      <table>
-        <tr>
-          <td> Air Quality: </td>
-          <td id="td1"> ${outputData2}, ${predictionWord} </td>
-        </tr>
-      </table>`;
 }
 
 function mapPredictionToWord(prediction) {
