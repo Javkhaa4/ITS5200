@@ -103,7 +103,7 @@
       // Show the predicted AQI on the first page
       let predictions1 = document.getElementById('predictions1');
       predictions1.innerHTML = `
-        <table>
+        <table style="border-collapse: collapse; border: none;">
           <tr>
             <td> Air Quality Index : </td>
             <td id="td0"> ${outputData} </td>
@@ -138,7 +138,7 @@ async function runExample2() {
 
   // Update the second predicted value section with the latest prediction in words
   predictions2.innerHTML = `
-      <table>
+      <table style="border-collapse: collapse; border: none;">
         <tr>
            <td> Air Quality : </td>
            <td id="td1"> ${predictionWord} </td>
