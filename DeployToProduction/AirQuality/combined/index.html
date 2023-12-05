@@ -55,7 +55,6 @@
     <div>
       <input type="button" value="Calculate" onclick="runExample1()"/>
     </div>
-    
     <h4> Air Quality Index </h4>
     <div id="predictions1">
     </div>
@@ -72,8 +71,6 @@
     <div>
       <input type="button" value="Calculate" onclick="runExample2()"/>
     </div>
-
-    
     <div id="predictions2"> 
     </div>
   </div>
@@ -139,7 +136,7 @@ async function runExample2() {
   td1Element.id = 'td1';
 
   // Update the second predicted value section with the latest prediction in words
-  predictions2.innerHTML = `<br/>
+  predictions2.innerHTML = `
       <table>
         <tr>
            <td> Air Quality : </td>
