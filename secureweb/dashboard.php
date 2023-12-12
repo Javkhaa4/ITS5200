@@ -66,8 +66,10 @@ if ($result->num_rows > 0) {
 </head>
 <body>
     <h2>Client</h2>
-	<label>Welcome, <?php echo $_SESSION["username"]; ?></label>
-	<h3>Create New Job</h3>
+    <label>Welcome, <?php echo $_SESSION["username"]; ?></label>
+    <!-- Sign Out hyperlink -->
+    <a href="logout.php">Sign Out</a>
+    <h3>Create New Job</h3>
 
     <form method="post" action="">
         <label for="jobID">JobID:</label>
@@ -78,8 +80,8 @@ if ($result->num_rows > 0) {
 
         <input type="submit" name="postJob" value="Post Job to Server">
     </form>
-	<br/>
-	<h3>Fetch Data</h3>
+    <br/>
+    <h3>Fetch Data</h3>
     <!-- Button to fetch and display Job ID and OPN Number -->
     <button id="fetchDataBtn">Fetch Data</button>
     <div id="result"></div>
@@ -98,6 +100,5 @@ if ($result->num_rows > 0) {
             });
         });
     </script>
-	
 </body>
 </html>

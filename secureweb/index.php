@@ -2,7 +2,7 @@
 session_start();
 
 // Define the endpoint for the external service
-$GLOBALS['endpoint'] = "https://localhost"; // Replace with your actual endpoint
+$GLOBALS['endpoint'] = "https://server.local"; // Replace with your actual endpoint
 
 // Database connection
 $conn = new mysqli("localhost", "root", "mysql", "encryption_demo");
@@ -18,7 +18,7 @@ function get_session($username, $password) {
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
-        CURLOPT_SSL_VERIFYHOST => 1, // Set to 0 to disable verification (for development purposes)
+        CURLOPT_SSL_VERIFYHOST => 0, // Set to 0 to disable verification (for development purposes)
         CURLOPT_TIMEOUT => 30,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
@@ -31,7 +31,7 @@ function get_session($username, $password) {
     ));
 
     // Disable SSL verification (for development purposes; not recommended in production)
-    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
 
     $response = curl_exec($curl);
     $err = curl_error($curl);
@@ -47,24 +47,30 @@ function get_session($username, $password) {
     }
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    // Perform authentication (replace with secure authentication logic)
-    $sql = "SELECT * FROM users WHERE name = '$username' AND pass = '$password'";
+    // Perform secure authentication using password_hash and password_verify
+    $sql = "SELECT * FROM users WHERE name = '$username'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        $_SESSION["username"] = $username;
-        header("Location: dashboard.php");
-        exit();
+        $row = $result->fetch_assoc();
+        $stored_password = $row["pass"];
+
+        // Verify the hashed password
+        if (password_verify($password, $stored_password)) {
+            $_SESSION["username"] = $username;
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid username or password";
+        }
     } else {
         $error = "Invalid username or password";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -86,5 +92,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="submit" value="Login">
     </form>
+    <br>
+    <!-- Add these hyperlinks to the HTML form -->
+    <a href="create_account.php">Create New Account</a><br>
+    <a href="update_password.php">Update Password</a>
 </body>
 </html>
