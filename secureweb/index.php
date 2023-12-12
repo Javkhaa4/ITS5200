@@ -1,11 +1,18 @@
 <?php
 session_start();
 
-// Define the endpoint for the external service
-$GLOBALS['endpoint'] = "https://server.local"; // Replace with your actual endpoint
+// Include settings.php for database connection details
+include 'settings.php';
 
 // Database connection
-$conn = new mysqli("localhost", "root", "mysql", "encryption_demo");
+$conn = new mysqli(
+    $databases['default']['default']['host'],
+    $databases['default']['default']['username'],
+    $databases['default']['default']['password'],
+    $databases['default']['default']['database'],
+    $databases['default']['default']['port']
+);
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
