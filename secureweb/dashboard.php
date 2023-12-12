@@ -66,13 +66,13 @@ if ($result->num_rows > 0) {
 </head>
 <body>
     <h2>Client</h2>
-    <label>Welcome, <?php echo $_SESSION["username"]; ?></label>
+    <label>Welcome, <?php echo $_SESSION["username"]; ?></label><br>
     <!-- Sign Out hyperlink -->
-    <a href="logout.php">Sign Out</a>
+    <a href="logout.php">Sign Out</a><br><br>
     <h3>Create New Job</h3>
 
     <form method="post" action="">
-        <label for="jobID">JobID:</label>
+        <label for="jobID">Job ID:</label>
         <input type="text" name="jobID" value="<?php echo $jobID; ?>" required autocomplete="off"><br>
 
         <label for="opnNumber">OPN Number:</label>
